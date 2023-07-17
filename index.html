@@ -3642,11 +3642,11 @@ C13.52,10.58,13.52,8.33,13.52,8.33z"/></svg>
           <span class="countdown-item__title">Horas</span>
         </div>
         <div class="form-countdown__item">
-          <span class="countdown-item__value js-countdown__minutes">39</span>
+          <span class="countdown-item__value js-countdown__minutes">40</span>
           <span class="countdown-item__title">Minutos</span>
         </div>
         <div class="form-countdown__item">
-          <span class="countdown-item__value js-countdown__seconds">28</span>
+          <span class="countdown-item__value js-countdown__seconds">00</span>
           <span class="countdown-item__title">Segundos</span>
         </div>
       </div>
@@ -3691,6 +3691,44 @@ C13.52,10.58,13.52,8.33,13.52,8.33z"/></svg>
       </div>
     </div>
   </section>
+  
+  <script>
+    'use strict';
+
+    document.addEventListener("DOMContentLoaded", () => {
+      /** Countdown **/
+      (() => {
+        let sec         = 2400,
+          countDiv    = document.querySelector(".js-countdown"),
+          countDown   = setInterval(function () {
+            secpass();
+          }, 1000);
+
+        function secpass() {
+          let min     = Math.floor(sec / 60),
+            remSec  = sec % 60;
+
+          if (remSec < 10) {
+            remSec = '0' + remSec;
+          }
+          if (min < 10) {
+            min = '0' + min;
+          }
+
+          document.querySelector('.js-countdown__minutes').innerHTML = min;
+          document.querySelector('.js-countdown__seconds').innerHTML = remSec;
+
+          if (sec > 0) {
+            sec = sec - 1;
+          } else {
+            clearInterval(countDown);
+            countDiv.innerHTML = '';
+          }
+        }
+      })();
+
+    });
+  </script>
   
   <!-- COMMENTS -->
   <style>
